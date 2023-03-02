@@ -41,7 +41,7 @@ exports.find = (req, res) => {
         let searchTerm = req.body.search;
 
         // use the connection
-        connection.query('SELECT * FROM user WHERE first_name LIKE ?', ['%'+ searchTerm +'%'], (err, rows) => {
+        connection.query('SELECT * FROM user WHERE first_name LIKE ? OR last_name LIKE ?', ['%' + searchTerm + '%', '%' + searchTerm + '%'], (err, rows) => {
             // when done with the connection, release it
             connection.release();
 
@@ -54,4 +54,46 @@ exports.find = (req, res) => {
             console.log('The data from user table: \n', rows);
         });
     });
+}
+
+// Render new user page
+exports.form = (req, res) => {
+    res.render('add-user');
+}
+
+// Add a new user
+exports.create = (req, res) => {
+    // res.render('add-user');
+
+
+    const{first_name, last_name, email, phone, comments} = req.body;
+
+    // connect to DB
+    pool.getConnection((err, connection) => {
+        if (err) throw err;
+        console.log('Connected as id #' + connection.threadId);
+
+        let searchTerm = req.body.search;
+
+        // use the connection
+        connection.query('INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?',
+        [first_name, last_name, email, phone, comments], (err, rows) => {
+            // when done with the connection, release it
+            connection.release();
+
+            if (!err) {
+                res.render('add-user', { alert: 'User added successfully.' });
+            } else {
+                console.log(err);
+            }
+
+            console.log('The data from user table: \n', rows);
+        });
+    });
+}
+
+
+// Edit a user
+exports.edit = (req, res) => {
+    res.render('edit-user');
 }
