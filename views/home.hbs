@@ -1,0 +1,37 @@
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col" class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each rows}}
+        <tr>
+            <th scope="row">{{this.id}}</th>
+            <td>{{this.first_name}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.phone}}</td>
+            <td class="text-center">
+                <a href="#" type="button" class="btn btn-light">
+                    <i class="bi bi-eye"></i>
+                    View
+                </a>
+                <a href="#" type="button" class="btn btn-light">
+                    <i class="bi bi-pencil"></i>
+                    Edit
+                </a>
+                <a href="#" type="button" class="btn btn-light">
+                    <i class="bi bi-person"></i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
