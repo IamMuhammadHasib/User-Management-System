@@ -13,40 +13,5 @@
 {{/if}}
 
 <form class="row g-3 needs-validation" method="post" action="/addUser" novalidate>
-    <div class="col-6">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="First name" name="first_name">
-            <label for="floatingInput">First name</label>
-        </div>
-    </div>
-    <div class="col-6">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Last name" name="last_name">
-            <label for="floatingInput">Last name</label>
-        </div>
-    </div>
-
-    <div class="col-6">
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-            <label for="floatingInput">Email</label>
-        </div>
-    </div>
-    <div class="col-6">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Phone" name="phone">
-            <label for="floatingInput">Phone</label>
-        </div>
-    </div>
-
-    <div class="col-12">
-        <div class="form-floating mb-3">
-            <textarea type="text" class="form-control" id="floatingInput" placeholder="Leave a comment here" id="comments" name="comments" style="height: 200px;">{{this.comments}}</textarea>
-            <label for="floatingInput">Comment</label>
-        </div>
-    </div>
-
-    <div class="col-12 d-grid">
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </div>
+    {{> user-form}}
 </form>
